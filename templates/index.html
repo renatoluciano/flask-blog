@@ -1,23 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Meu Blog em Flask</title>
-</head>
-<body>
-    <header>
-        <h1>Meu Blog Pessoal</h1>
-        <hr>
-    </header>
-    
-    <main>
-        <h2>Bem-vindo à página inicial!</h2>
-        <p>Este é o primeiro post do nosso blog estruturado com Flask e HTML.</p>
-    </main>
+{% extends "base.html" %}
 
-    <footer>
-        <hr>
-        <p>&copy; 2026 - Desenvolvido em Flask</p>
-    </footer>
-</body>
-</html>
+{% block title %}Página Inicial - Meu Blog{% endblock %}
+
+{% block content %}
+    <h2>Bem-vindo à página inicial!</h2>
+    <p>Este é o primeiro post do nosso blog estruturado com Flask e HTML.</p>
+{% endblock %}
