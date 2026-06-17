@@ -55,8 +55,9 @@ def home():
     posts = Post.query.all()
     return render_template("index.html", posts=posts)
 
-# 2. Rota para criar um novo post
+# 2. Rota para criar um novo post (PROTEGIDA)
 @app.route("/post/new", methods=["GET", "POST"])
+@login_required
 def new_post():
     if request.method == "POST":
         titulo_formulario = request.form["titulo"]
@@ -69,8 +70,9 @@ def new_post():
         
     return render_template("create_post.html")
 
-# 3. Rota para editar um post existente
+# 3. Rota para editar um post existente (PROTEGIDA)
 @app.route("/post/<int:post_id>/edit", methods=["GET", "POST"])
+@login_required
 def edit_post(post_id):
     post = Post.query.get_or_404(post_id)
     
@@ -82,8 +84,9 @@ def edit_post(post_id):
         
     return render_template("edit_post.html", post=post)
 
-# 4. Rota para excluir um post existente
+# 4. Rota para excluir um post existente (PROTEGIDA)
 @app.route("/post/<int:post_id>/delete")
+@login_required
 def delete_post(post_id):
     post = Post.query.get_or_404(post_id)
     db.session.delete(post)
@@ -125,7 +128,7 @@ def login():
         
     return render_template("login.html")
 
-# 7. Rota para logout de usuários
+# 7. Rota para logout de usuários (PROTEGIDA)
 @app.route("/logout")
 @login_required
 def logout():
