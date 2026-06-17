@@ -1,13 +1,11 @@
-from flask import Flask
+from flask import Flask, render_template  # <-- Importante adicionar o render_template aqui
 
-# Inicializa a aplicação Flask
 app = Flask(__name__)
 
-# Cria a página inicial do blog
 @app.route("/")
 def home():
-    return "<h1>Bem-vindo ao nosso Blog!</h1>"
+    # O Flask procura automaticamente dentro da pasta 'templates/'
+    return render_template("index.html")
 
-# Roda o servidor se executarmos este arquivo diretamente
 if __name__ == "__main__":
     app.run(debug=True)
